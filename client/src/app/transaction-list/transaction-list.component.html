@@ -1,0 +1,48 @@
+<div class="mb-3" *ngIf="!selectedTransaction">
+    <h3>Filter Transactions</h3>
+    <div class="form-inline">
+      <input type="date" #startDate class="form-control mr-2">
+      <input type="date" #endDate class="form-control mr-2">
+      <button (click)="filterByDate(startDate.value, endDate.value)" class="btn btn-primary mr-2">Filter by Date</button>
+      
+      <select #statusSelect class="form-control mr-2">
+        <option value="">Select Status</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+        <!-- Add other status options as needed -->
+      </select>
+      <button (click)="filterByStatus(statusSelect.value)" class="btn btn-primary">Filter by Status</button>
+    </div>
+  </div>
+  
+  <table class="table table-striped" aria-labelledby="transactionTableCaption" *ngIf="!selectedTransaction">
+    <caption id="transactionTableCaption">User Transactions</caption>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Comments</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.date | date:'dd/MM/yyyy' }}</td>
+        
+        <td>{{ transaction.comments }}</td>
+        <td>{{ transaction.status }}</td>
+        <td>
+          <button class="btn btn-link" (click)="onViewTransaction(transaction)">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <app-transaction-details 
+    *ngIf="selectedTransaction" 
+    [transaction]="selectedTransaction"
+    (transactionUpdated)="onTransactionUpdated($event)"
+    (goBack)="onGoBack()"
+  ></app-transaction-details>

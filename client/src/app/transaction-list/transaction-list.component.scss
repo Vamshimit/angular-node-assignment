@@ -1,0 +1,44 @@
+/* Filter Section Styling */
+.mb-3 {
+    margin-bottom: 20px;
+  }
+  
+  .mb-3 h3 {
+    margin-bottom: 10px;
+  }
+  
+  .form-inline .form-control,
+  .form-inline .btn {
+    margin-right: 10px; /* Adjust spacing between elements */
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  caption {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* View Transaction Button */
+  .btn-link {
+    padding: 0;
+    text-decoration: underline;
+    color: #007bff; /* Blue link color */
+  }
+  
